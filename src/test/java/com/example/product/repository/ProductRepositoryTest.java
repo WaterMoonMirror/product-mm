@@ -5,12 +5,13 @@ import com.example.product.dataobject.ProductInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.test.annotation.Commit;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
-@Commit
+@Component
 public class ProductRepositoryTest extends ProductApplicationTests {
 
     @Autowired
@@ -19,5 +20,6 @@ public class ProductRepositoryTest extends ProductApplicationTests {
     public void findByProductStatus() {
         List<ProductInfo> byProductStatus = productRepository.findByProductStatus(1);
         Assert.assertTrue(byProductStatus.size()>0);
+//        productRepository.findAll();
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 public class ProductInfo {
     @Id
-    private Integer productId;
+    private String productId;
     //商品名称
     private String productName;
     //单价
