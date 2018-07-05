@@ -5,14 +5,14 @@ import com.example.product.VO.ProductVO;
 import com.example.product.VO.ResultVO;
 import com.example.product.dataobject.ProductCategory;
 import com.example.product.dataobject.ProductInfo;
+import com.example.product.dtd.CartDTD;
+import com.example.product.exception.ProductExcepton;
 import com.example.product.service.ProductCategoryService;
 import com.example.product.service.ProductService;
 import com.example.product.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,5 +70,22 @@ public class ProductController {
 
         return ResultVOUtil.success(productVOList);
 
+    }
+
+    @PostMapping("/listForOrder")
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
+        return productService.listForOrder(productIdList);
+
+    }
+
+    @PostMapping("/decreaseStock")
+    public String decreaseStock(@RequestBody List<CartDTD> cartDTDList){
+        try {
+            productService.decreaseStock(cartDTDList);
+            return "ok";
+        } catch (ProductExcepton productExcepton) {
+            productExcepton.printStackTrace();
+            return  productExcepton.getMessage();
+        }
     }
 }
