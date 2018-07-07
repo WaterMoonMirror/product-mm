@@ -10,6 +10,7 @@ public class ServerController {
 
     @Autowired
     private ProductService productService;
+
     @GetMapping("/msg")
     public String msg() {
         return "this is product' msg";

@@ -8,9 +8,9 @@ import com.example.product.productserver.VO.ResultVO;
  * @Description:
  */
 public class ResultVOUtil {
-    public static ResultVO success(Object object){
+    public static ResultVO success(Object object) {
 
-        ResultVO resultVO=new ResultVO();
+        ResultVO resultVO = new ResultVO();
         resultVO.setCode(0);
         resultVO.setMsg("成功");
         resultVO.setData(object);

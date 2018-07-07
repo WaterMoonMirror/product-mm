@@ -39,7 +39,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.example.product.common</groupId>
+            <groupId>com.example</groupId>
             <artifactId>product-common</artifactId>
         </dependency>
     </dependencies>

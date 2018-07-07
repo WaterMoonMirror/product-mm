@@ -11,7 +11,8 @@ import java.util.List;
  */
 public interface ProductCategoryService {
     /**
-     *  查询类目列表
+     * 查询类目列表
+     *
      * @param categoryTypeList
      * @return
      */

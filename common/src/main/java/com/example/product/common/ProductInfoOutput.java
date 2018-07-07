@@ -1,4 +1,7 @@
-package com.example.product.common
+package com.example.product.common;
+
+import lombok.Data;
+
 import java.math.BigDecimal;
 
 @Data

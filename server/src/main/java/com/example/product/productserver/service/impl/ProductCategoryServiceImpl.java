@@ -1,8 +1,8 @@
 package com.example.product.productserver.service.impl;
 
-import com.example.product.dataobject.ProductCategory;
-import com.example.product.repository.ProductCategoryRepository;
-import com.example.product.service.ProductCategoryService;
+import com.example.product.productserver.dataobject.ProductCategory;
+import com.example.product.productserver.repository.ProductCategoryRepository;
+import com.example.product.productserver.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
+
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
         return productCategoryRepository.findByCategoryTypeIn(categoryTypeList);

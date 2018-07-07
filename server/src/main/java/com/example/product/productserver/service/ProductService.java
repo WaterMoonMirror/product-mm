@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface ProductService {
     /**
-     *
      * 功能描述:  查询所以在架商品列表
      *
      * @param:
@@ -24,7 +23,8 @@ public interface ProductService {
     List<ProductInfo> findUpAll();
 
     /**
-     *  查询商品列表（订单微服务使用）
+     * 查询商品列表（订单微服务使用）
+     *
      * @param listForOrder
      * @return
      */
@@ -32,9 +32,10 @@ public interface ProductService {
 
     /**
      * 扣除库存
+     *
      * @param cartDTDList
      */
     void decreaseStock(List<CartDTD> cartDTDList) throws ProductExcepton;
 
-    
+
 }

@@ -1,6 +1,6 @@
 package com.example.product.productserver.exception;
 
-import com.example.product.enums.ResultEnum;
+import com.example.product.productserver.enums.ResultEnum;
 
 public class ProductExcepton extends Exception {
     private Integer code;

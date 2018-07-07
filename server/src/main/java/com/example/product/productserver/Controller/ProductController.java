@@ -46,23 +46,22 @@ public class ProductController {
 //         * 3. 查询类目
         List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(categoryTypeList);
 //         * 4. 构造数据
-        List<ProductVO> productVOList =new ArrayList<>();
-        for (ProductCategory productCategory:productCategoryList){
-            ProductVO productVO =new ProductVO();
+        List<ProductVO> productVOList = new ArrayList<>();
+        for (ProductCategory productCategory : productCategoryList) {
+            ProductVO productVO = new ProductVO();
             productVO.setCategoryName(productCategory.getCategoryName());
             productVO.setCategoryType(productCategory.getCategoryType());
 
-            List<ProductInfoVO> productInfoVOList =new ArrayList<>();
-            for (ProductInfo productInfo:upAll){
-                if (productInfo.getCategoryType().equals(productCategory.getCategoryId())){
-                    ProductInfoVO productInfoVO=new ProductInfoVO();
-                    BeanUtils.copyProperties(productInfo,productInfoVO);
+            List<ProductInfoVO> productInfoVOList = new ArrayList<>();
+            for (ProductInfo productInfo : upAll) {
+                if (productInfo.getCategoryType().equals(productCategory.getCategoryId())) {
+                    ProductInfoVO productInfoVO = new ProductInfoVO();
+                    BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);
                 }
             }
             productVO.setProductInfoList(productInfoVOList);
             productVOList.add(productVO);
-
 
 
         }
@@ -73,19 +72,19 @@ public class ProductController {
     }
 
     @PostMapping("/listForOrder")
-    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
         return productService.listForOrder(productIdList);
 
     }
 
     @PostMapping("/decreaseStock")
-    public String decreaseStock(@RequestBody List<CartDTD> cartDTDList){
+    public String decreaseStock(@RequestBody List<CartDTD> cartDTDList) {
         try {
             productService.decreaseStock(cartDTDList);
             return "ok";
         } catch (ProductExcepton productExcepton) {
             productExcepton.printStackTrace();
-            return  productExcepton.getMessage();
+            return productExcepton.getMessage();
         }
     }
 }
