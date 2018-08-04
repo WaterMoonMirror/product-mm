@@ -37,11 +37,41 @@ public class MqReceiver {
      * 第三种创建方式：自动添加队列,并且队列和Exchange绑定
      * @param message
      */
+//    @RabbitListener(bindings =@QueueBinding(
+//            value = @Queue("MyQueue"),
+//            exchange = @Exchange("MyExchange")
+//    ))
+//    public void process(String message){
+//        log.info("MqReceiver:{}",message);
+//
+//    }
+    /**
+     *  绑定Exchange创建队列
+     *  水果
+     * @param message
+     */
     @RabbitListener(bindings =@QueueBinding(
-            value = @Queue("MyQueue"),
-            exchange = @Exchange("MyExchange")
+            value = @Queue("computerOrder"),
+            exchange = @Exchange("myOrder"),
+            key="computer"
+            
     ))
-    public void process(String message){
+    public void computerProcess(String message){
+        log.info("MqReceiver:{}",message);
+
+    }
+    
+    /**
+     *  绑定Exchange创建队列
+     *  电器
+     * @param message
+     */
+    @RabbitListener(bindings =@QueueBinding(
+            value = @Queue("fruitOrder"),
+            exchange = @Exchange("myOrder"),
+            key="fruit"
+    ))
+    public void fruitProcess(String message){
         log.info("MqReceiver:{}",message);
 
     }

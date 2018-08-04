@@ -23,6 +23,10 @@ public class SendMessageController {
      */
     @GetMapping("/sendMessage")
     public void sendMessage(){
-            amqpTemplate.convertAndSend("MyQueue","now "+new Date());
+           // amqpTemplate.convertAndSend("MyQueue","now "+new Date());
+    	// 发送电器
+    	amqpTemplate.convertAndSend("myOrder","computer","now "+new Date());
+    	// 发送水果
+    	amqpTemplate.convertAndSend("myOrder","fruit","now "+new Date());
     }
 }

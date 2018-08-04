@@ -1,12 +1,12 @@
 package com.example.product.productserver.Controller;
 
+import com.example.product.common.DecreaseStockInput;
 import com.example.product.productserver.VO.ProductInfoVO;
 import com.example.product.productserver.VO.ProductVO;
 import com.example.product.productserver.VO.ResultVO;
 import com.example.product.productserver.dataobject.ProductCategory;
 import com.example.product.productserver.dataobject.ProductInfo;
-import com.example.product.productserver.dtd.CartDTD;
-import com.example.product.productserver.exception.ProductExcepton;
+import com.example.product.productserver.exception.ProductException;
 import com.example.product.productserver.service.ProductCategoryService;
 import com.example.product.productserver.service.ProductService;
 import com.example.product.productserver.utils.ResultVOUtil;
@@ -78,11 +78,11 @@ public class ProductController {
     }
 
     @PostMapping("/decreaseStock")
-    public String decreaseStock(@RequestBody List<CartDTD> cartDTDList) {
+    public String decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
         try {
-            productService.decreaseStock(cartDTDList);
+            productService.decreaseStock(decreaseStockInputList);
             return "ok";
-        } catch (ProductExcepton productExcepton) {
+        } catch (ProductException productExcepton) {
             productExcepton.printStackTrace();
             return productExcepton.getMessage();
         }

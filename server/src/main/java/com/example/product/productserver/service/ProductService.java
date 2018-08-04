@@ -1,8 +1,7 @@
 package com.example.product.productserver.service;
 
+import com.example.product.common.DecreaseStockInput;
 import com.example.product.productserver.dataobject.ProductInfo;
-import com.example.product.productserver.dtd.CartDTD;
-import com.example.product.productserver.exception.ProductExcepton;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ public interface ProductService {
     /**
      * 查询商品列表（订单微服务使用）
      *
-     * @param listForOrder
      * @return
      */
     List<ProductInfo> listForOrder(List<String> productIdList);
@@ -33,9 +31,8 @@ public interface ProductService {
     /**
      * 扣除库存
      *
-     * @param cartDTDList
      */
-    void decreaseStock(List<CartDTD> cartDTDList) throws ProductExcepton;
+    void decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
 
 
 }
